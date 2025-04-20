@@ -13,7 +13,7 @@ import {
   SimpleGrid, 
   Icon,
   useColorModeValue,
-  Image,
+  Image as ChakraImage,
   Badge,
   useDisclosure,
   Fade,
@@ -27,6 +27,7 @@ import {
   IconButton,
 } from '@chakra-ui/react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 
 interface Benefit {
   icon: any;
@@ -130,7 +131,7 @@ const BackgroundVideo = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentVideo((prev) => (prev + 1) % videos.length);
-    }, 10000); // Switch video every 10 seconds
+    }, 10000);
 
     return () => clearInterval(interval);
   }, []);
@@ -151,7 +152,7 @@ const BackgroundVideo = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        bg: 'rgba(0, 0, 0, 0.5)',
+        bg: 'rgba(0, 0, 0, 0.6)',
         zIndex: 1,
       }}
     >
@@ -217,7 +218,7 @@ export default function Home() {
           }}
           zIndex={1}
         />
-        <Container maxW="container.xl">
+        <Container maxW="container.xl" position="relative" zIndex={2}>
           <Flex
             direction={{ base: 'column', lg: 'row' }}
             align="center"
@@ -233,6 +234,23 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
+              <MotionBox
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                mb={6}
+              >
+                <Image
+                  src="/সবুজহাট.png"
+                  alt="সবুজহাট Logo"
+                  width={200}
+                  height={80}
+                  style={{
+                    filter: 'drop-shadow(0 0 20px rgba(255,255,255,0.3))'
+                  }}
+                />
+              </MotionBox>
+
               {isAuthenticated && user ? (
                 <UserProfile user={user} />
               ) : (
@@ -321,7 +339,7 @@ export default function Home() {
                   gestureDetectedText={t('gestureDetected')}
                 />
               ) : (
-                <Image
+                <ChakraImage
                   src="https://images.unsplash.com/photo-1511795409834-432f7b72bcf4"
                   alt="Eco-friendly market"
                   objectFit="cover"
