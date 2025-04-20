@@ -1,25 +1,44 @@
 'use client'
 
-import { ChakraProvider } from '@chakra-ui/react'
-import { extendTheme } from '@chakra-ui/react'
-import { ReactNode } from 'react'
+import { CacheProvider } from '@chakra-ui/next-js'
+import { ChakraProvider, extendTheme } from '@chakra-ui/react'
+import { LanguageProvider } from './language-context'
+import { OrderProvider } from './order-context'
+import { UserProvider } from './user-context'
 
-const theme = extendTheme({
+export const theme = extendTheme({
+  config: {
+    initialColorMode: 'system',
+    useSystemColorMode: true,
+  },
   colors: {
     eco: {
-      50: '#f0fdf4',
-      400: '#4ade80',
-      500: '#22c55e',
-      600: '#16a34a',
-      700: '#15803d'
-    }
-  }
+      50: '#f0f9f0',
+      100: '#d8f0d8',
+      200: '#b8e6b8',
+      300: '#8fd98f',
+      400: '#5cc65c',
+      500: '#3aad3a',
+      600: '#2d8a2d',
+      700: '#276e27',
+      800: '#245824',
+      900: '#1f4a1f',
+    },
+  },
 })
 
-export function Providers({ children }: { children: ReactNode }) {
+export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ChakraProvider theme={theme}>
-      {children}
-    </ChakraProvider>
+    <CacheProvider>
+      <ChakraProvider theme={theme}>
+        <LanguageProvider>
+          <UserProvider>
+            <OrderProvider>
+              {children}
+            </OrderProvider>
+          </UserProvider>
+        </LanguageProvider>
+      </ChakraProvider>
+    </CacheProvider>
   )
 }

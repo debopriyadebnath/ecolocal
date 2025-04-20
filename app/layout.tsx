@@ -1,5 +1,6 @@
 import { Inter } from 'next/font/google'
 import { Providers } from './providers'
+import { ChakraColorModeScript } from './color-mode-script'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,7 +15,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <ChakraColorModeScript />
+      </head>
       <body className={inter.className}>
         <Providers>
           {children}
