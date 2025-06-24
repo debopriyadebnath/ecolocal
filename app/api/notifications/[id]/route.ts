@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import connectDB from '../../../../lib/mongodb';
 import Notification from '../../../../models/Notification';
 
+// Add this above or near your motion import
+// @ts-expect-error: Type is too complex for TS to infer
+const MotionFlex = motion(Flex);
+
 export async function PUT(
   request: Request,
   { params }: { params: { id: string } }
