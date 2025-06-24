@@ -332,22 +332,21 @@ export default function Chat() {
               )}
 
               <HStack>
-                <Input
-                  type="file"
-                  accept="image/*"
-                  display="none"
-                  id="image-upload"
-                  onChange={handleImageUpload}
-                />
                 <Button
                   as="label"
-                  htmlFor="image-upload"
                   size="sm"
                   leftIcon={<Icon as={FaImage} />}
                   colorScheme="eco"
                   variant="outline"
                 >
                   {t('addImage')}
+                  <input
+                    id="image-upload"
+                    type="file"
+                    accept="image/*"
+                    hidden
+                    onChange={handleImageUpload}
+                  />
                 </Button>
                 <Button
                   size="sm"

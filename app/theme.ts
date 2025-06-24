@@ -1,9 +1,7 @@
-import { theme as baseTheme, ThemeConfig } from '@chakra-ui/react'
+import { extendTheme } from '@chakra-ui/react'
 
-export const theme: ThemeConfig = {
-  ...baseTheme,
+const theme = extendTheme({
   colors: {
-    ...baseTheme.colors,
     eco: {
       50: '#f0f9f0',
       100: '#d8f0d8',
@@ -18,12 +16,10 @@ export const theme: ThemeConfig = {
     },
   },
   fonts: {
-    ...baseTheme.fonts,
     heading: 'var(--font-inter)',
     body: 'var(--font-inter)',
   },
   components: {
-    ...baseTheme.components,
     Button: {
       baseStyle: {
         fontWeight: 'semibold',
@@ -40,4 +36,6 @@ export const theme: ThemeConfig = {
       },
     },
   },
-} 
+})
+
+export default theme

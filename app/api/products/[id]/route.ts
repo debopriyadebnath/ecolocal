@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Product from '@/models/Product';
-import { calculateCarbonFootprint, getSustainabilityScore } from '@/lib/utils';
+import connectDB from '../../../../lib/mongodb';
+import Product from '../../../../models/Product';
+import { calculateCarbonFootprint, getSustainabilityScore } from '../../../../lib/utils';
 
 export async function GET(
   request: Request,

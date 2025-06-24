@@ -215,10 +215,7 @@ export default function VendorCard({
             colorScheme="eco"
             leftIcon={<FaRecycle />}
             onClick={() => {
-              router.push({
-                pathname: '/chat',
-                query: { vendor: name }
-              })
+              router.push(`/chat?vendor=${encodeURIComponent(name)}`)
             }}
           >
             {t('sellWaste')}

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/lib/mongodb';
-import Notification from '@/models/Notification';
+import connectDB from '../../../lib/mongodb';
+import Notification from '../../../models/Notification';
 
 export async function GET(request: Request) {
   try {

@@ -78,15 +78,15 @@ export default function CarbonCalculator() {
 
   const calculateCarbonFootprint = () => {
     // Basic calculation (can be made more sophisticated)
-    const transportationEmissions = parseFloat(formData.transportation) * 0.14 // kg CO2 per km
-    const electricityEmissions = parseFloat(formData.electricityUsage) * 0.5 // kg CO2 per kWh
+    const transportationEmissions = parseFloat(formData.transportation || '0') * 0.14; // kg CO2 per km
+    const electricityEmissions = parseFloat(formData.electricityUsage || '0') * 0.5; // kg CO2 per kWh
     const dietEmissions = {
       vegan: 1.5,
       vegetarian: 2.5,
       mixed: 3.3,
       highMeat: 4.5
-    }[formData.dietType] * 365 // yearly emissions
-    const purchaseEmissions = parseFloat(formData.monthlyPurchases) * 0.5 * 12 // yearly emissions
+    }[(formData?.dietType as 'vegan' | 'vegetarian' | 'mixed' | 'highMeat') || 'mixed'] * 365; // yearly emissions
+    const purchaseEmissions = parseFloat(formData.monthlyPurchases || '0') * 0.5 * 12; // yearly emissions
 
     const totalEmissions = transportationEmissions + electricityEmissions + dietEmissions + purchaseEmissions
 
