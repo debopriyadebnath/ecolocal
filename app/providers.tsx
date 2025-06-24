@@ -5,6 +5,7 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react'
 import { LanguageProvider } from './language-context'
 import { OrderProvider } from './order-context'
 import { UserProvider } from './user-context'
+import { NotificationProvider } from './notification-context'
 
 export const theme = extendTheme({
   config: {
@@ -34,7 +35,9 @@ export function Providers({ children }: { children: React.ReactNode }) {
         <LanguageProvider>
           <UserProvider>
             <OrderProvider>
-              {children}
+              <NotificationProvider>
+                {children}
+              </NotificationProvider>
             </OrderProvider>
           </UserProvider>
         </LanguageProvider>

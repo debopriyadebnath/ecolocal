@@ -28,6 +28,7 @@ import {
 } from '@chakra-ui/react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import Link from 'next/link';
 
 interface Benefit {
   icon: any;
@@ -639,6 +640,48 @@ export default function Home() {
           </VStack>
         </Container>
       </MotionBox>
+
+      {/* New Feature Section - EcoLocal */}
+      <VStack spacing={10} align="center" py={10}>
+        <Heading size="2xl" color="green.300">EcoLocal: Sustainable Marketplace</Heading>
+        <Text fontSize="xl" color="green.200" maxW="2xl" textAlign="center">
+          Empower your eco-friendly lifestyle with carbon tracking, green delivery, and sustainable shopping.
+        </Text>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={8} w="full" maxW="6xl">
+          <FeatureCard
+            title="Carbon Footprint Calculator"
+            description="Calculate your impact and discover ways to reduce your carbon footprint."
+            href="/carbon"
+          />
+          <FeatureCard
+            title="Green Route Delivery"
+            description="Choose the most eco-friendly delivery routes for your orders."
+            href="/routes"
+          />
+          <FeatureCard
+            title="EcoTips Lifestyle Tracker"
+            description="Track your daily eco habits and get personalized tips."
+            href="/ecotips"
+          />
+          <FeatureCard
+            title="Green Tag Products"
+            description="Shop products with verified green tags for sustainability."
+            href="/greentag"
+          />
+        </SimpleGrid>
+      </VStack>
     </Box>
   )
+}
+
+function FeatureCard({ title, description, href }: { title: string; description: string; href: string }) {
+  return (
+    <Box bg="black" borderRadius="lg" boxShadow="lg" p={6} border="1px solid" borderColor="green.700" _hover={{ borderColor: 'green.400', boxShadow: '0 0 0 2px #00cc00' }} transition="all 0.2s">
+      <Heading size="md" color="green.300" mb={2}>{title}</Heading>
+      <Text color="green.100" mb={4}>{description}</Text>
+      <Button as={Link} href={href} colorScheme="green" variant="solid" w="full">
+        Explore
+      </Button>
+    </Box>
+  );
 }
