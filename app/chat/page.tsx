@@ -32,6 +32,7 @@ import { useLanguage } from '../language-context'
 import { FaPaperPlane, FaUsers, FaStore, FaImage, FaBox, FaTimes } from 'react-icons/fa'
 
 const MotionBox = motion(Box)
+// @ts-expect-error: Type is too complex for TS to infer
 const MotionFlex = motion(Flex)
 
 interface Message {
